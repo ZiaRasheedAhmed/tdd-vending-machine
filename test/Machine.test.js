@@ -1,5 +1,5 @@
 const Machine = require('../src/Machine');
-
+let amt = 0;
 // 1. As a customer, I want to see that the vending machine has items, so that I can purchase them.
 describe('the vending machine', () => {
     it('should have items to purchase', () => {
@@ -15,10 +15,10 @@ describe('the vending machine', () => {
     });
 
 // 2. As a customer, I want to know how much money I have deposited, so that I know what I can purchase.
-    it('should have items to purchase', () => {
+    it('how much money I have deposited', () => {
         // setup
         const machine = new Machine();
-        let amt =100;
+        amt =100;
         let abc = '';
         const expected = new Array(10,20,50,100,500);
         for(let i = 0; i < expected.length; i++){
@@ -37,14 +37,15 @@ describe('the vending machine', () => {
         expect(abc).toEqual(actual);
     });
 // 3. As a customer, I want to add additional money, so that I can use the denominations I have to purchase an item.
-it('should have items to purchase', () => {
+it('More deposite done', () => {
     // setup
     const machine = new Machine();
-    let amt =100;
-    let abc = '';
+    const amt2 = 50;
+
     const expected = new Array(10,20,50,100,500);
     for(let i = 0; i < expected.length; i++){
-        if(expected[i] == amt){
+        if(expected[i] == amt2){
+            amt +=amt2;
             abc = 'You have deposited Rs: '+amt;
             break;
         }
@@ -52,12 +53,11 @@ it('should have items to purchase', () => {
             abc = expected[i];
         }
     }
-    amt +=50;
     // exercise
     const actual = machine.deposit(amt);
 
     // assert
-    expect(abc).toEqual(actual);
+    expect(actual).toEqual(abc);
 });
 
 });
