@@ -24,6 +24,7 @@ describe('the vending machine', () => {
         for(let i = 0; i < expected.length; i++){
             if(expected[i] == amt){
                 abc = 'You have deposited Rs: '+amt;
+                break;
             }
             else{
                 abc = expected[i];
