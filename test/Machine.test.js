@@ -61,17 +61,17 @@ it('More deposite done', () => {
 });
 
 // 4. As a customer, I want to see a message if my item is unavailable, so that I can make another choice.
-it('should have items to purchase', () => {
+it('The item you selected is unavailable', () => {
     // setup
     const machine = new Machine();
     const expected = 'The item you selected is unavailable';
     
     
     // exercise
-    const actual = machine.selectItem();
+    const actual = machine.selectItem(3);
 
     // assert
-    expect(n).toEqual(actual);
+    expect(expected).toEqual(actual);
 });
 
 });

@@ -8,7 +8,7 @@ module.exports = class Machine {
 
 
     seeSelections() {
-        return [{'crisps': 100}, {'chocolate': 350}, {'mints': 70}];
+        return this.items;
     }
 
     deposit(amt) {
@@ -17,6 +17,10 @@ module.exports = class Machine {
     }
     
     selectItem(code) {
-        return ('The item you selected is unavailable');
+        const validitem = this.items[code];
+        if(validitem==undefined){
+            return ('The item you selected is unavailable');
+        }
+        
     }
 }
