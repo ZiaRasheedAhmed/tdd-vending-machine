@@ -12,5 +12,4 @@ module.exports = class Machine {
     deposit(amt) {
             return ('You have deposited Rs: '+amt);
     }
-    
-};
+}

@@ -36,6 +36,28 @@ describe('the vending machine', () => {
         // assert
         expect(abc).toEqual(actual);
     });
+// 3. As a customer, I want to add additional money, so that I can use the denominations I have to purchase an item.
+it('should have items to purchase', () => {
+    // setup
+    const machine = new Machine();
+    let amt =100;
+    let abc = '';
+    const expected = new Array(10,20,50,100,500);
+    for(let i = 0; i < expected.length; i++){
+        if(expected[i] == amt){
+            abc = 'You have deposited Rs: '+amt;
+            break;
+        }
+        else{
+            abc = expected[i];
+        }
+    }
+    amt +=50;
+    // exercise
+    const actual = machine.deposit(amt);
 
+    // assert
+    expect(abc).toEqual(actual);
+});
 
 });
