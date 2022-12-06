@@ -36,14 +36,14 @@ describe('the vending machine', () => {
         // assert
         expect(abc).toEqual(actual);
     });
+
 // 3. As a customer, I want to add additional money, so that I can use the denominations I have to purchase an item.
 it('More deposite done', () => {
     // setup
     const machine = new Machine();
     const amt2 = 50;
-
     const expected = new Array(10,20,50,100,500);
-    for(let i = 0; i < expected.length; i++){
+    for(var i = 0; i < expected.length; i++){
         if(expected[i] == amt2){
             amt +=amt2;
             abc = 'You have deposited Rs: '+amt;
@@ -58,6 +58,20 @@ it('More deposite done', () => {
 
     // assert
     expect(actual).toEqual(abc);
+});
+
+// 4. As a customer, I want to see a message if my item is unavailable, so that I can make another choice.
+it('should have items to purchase', () => {
+    // setup
+    const machine = new Machine();
+    const expected = 'The item you selected is unavailable';
+    
+    
+    // exercise
+    const actual = machine.selectItem();
+
+    // assert
+    expect(n).toEqual(actual);
 });
 
 });
