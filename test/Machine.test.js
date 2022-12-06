@@ -18,13 +18,22 @@ describe('the vending machine', () => {
     it('should have items to purchase', () => {
         // setup
         const machine = new Machine();
-        const expected = [10,20,50,100,500];
-
+        let amt =100;
+        let abc = '';
+        const expected = new Array(10,20,50,100,500);
+        for(let i = 0; i < expected.length; i++){
+            if(expected[i] == amt){
+                abc = 'You have deposited Rs: '+amt;
+            }
+            else{
+                abc = expected[i];
+            }
+        }
         // exercise
-        const actual = machine.seeSelections();
+        const actual = machine.deposit(amt);
 
         // assert
-        expect(expected).toEqual(actual);
+        expect(abc).toEqual(actual);
     });
 
 

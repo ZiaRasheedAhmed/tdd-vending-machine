@@ -9,11 +9,8 @@ module.exports = class Machine {
     seeSelections() {
         return [{'crisps': 100}, {'chocolate': 350}, {'mints': 70}];
     }
-    deposit() {
-        let a = 100;
-        if(a == 100){
-            return ('You have deposited Rs: 100');
-        }
+    deposit(amt) {
+            return ('You have deposited Rs: '+amt);
     }
     
 };
