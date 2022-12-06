@@ -1,10 +1,14 @@
-module.exports = class Machine {
-    constructor() {
+let arr = new Array();
 
+module.exports = class Machine {
+    constructor(item,price) {
+        this.item = item;
+        this.price = price;
     }
 
 
     seeSelections() {
-        let items = [{'crisps': 'Rs 100'}, {'chocolate': 'Rs 350'}, {'mints': 'Rs 70'}];
+        return [{'crisps': 100}, {'chocolate': 350}, {'mints': 70}];
     }
+    
 };
