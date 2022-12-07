@@ -55,14 +55,14 @@ it('The item you selected is unavailable', () => {
 });
 
 //5. As a customer, I want to see a message if my deposit is insufficient, so that I know to add more money.
-it('The item you selected is unavailable', () => {
+it('Your deposit is insufficient. Please add Rs 20 for this item', () => {
     // setup
     const machine = new Machine();
     const expected = 'Your deposit is insufficient. Please add Rs 50 for this item';
     
     
     // exercise
-    machine.deposit(100);
+    machine.deposit(50);
     const actual = machine.selectItem(0);
 
     // assert
