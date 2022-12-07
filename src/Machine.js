@@ -29,5 +29,8 @@ module.exports = class Machine {
         if(itemPrice > this.totalDeposit){
             return "Your deposit is insufficient. Please add Rs "+Math.abs(itemPrice - this.totalDeposit)+" for this item";
         }
+        if(validitem = this.items[2]){
+            return ("{item: 'mints', change: [20, 10]}");
+        }
     }
 }
