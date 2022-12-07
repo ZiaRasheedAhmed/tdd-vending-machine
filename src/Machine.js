@@ -1,9 +1,8 @@
-let arr = new Array();
-let amt1 = 0;
 module.exports = class Machine {
     constructor() {
-        amt1 =0;
+        this.totalDeposit =0;
         this.items = [{'crisps': 100}, {'chocolate': 350}, {'mints': 70}];
+        this.expectedmoney = [10,20,50,100,500];
     }
 
 
@@ -12,8 +11,12 @@ module.exports = class Machine {
     }
 
     deposit(amt) {
-            amt1 += amt;
-            return ('You have deposited Rs: '+amt1);
+        var expected = this.expectedmoney.find(i=> i === amt);
+        if(expected == undefined){
+            return " We are excepted only 10,20,50,100 or 500 note!"
+        }
+        this.totalDeposit += amt;
+        return ('You have deposited Rs '+this.totalDeposit);
     }
     
     selectItem(code) {
@@ -21,6 +24,10 @@ module.exports = class Machine {
         if(validitem==undefined){
             return ('The item you selected is unavailable');
         }
-        
+        const itemName = Object.keys(validitem)[0];
+        const itemPrice = Object.values(validitem)[0];
+        if(itemPrice > this.totalDeposit){
+            return "Your deposit is insufficient. Please add Rs "+Math.abs(itemPrice - this.totalDeposit)+" for this item";
+        }
     }
 }

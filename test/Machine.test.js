@@ -19,48 +19,28 @@ describe('the vending machine', () => {
         // setup
         const machine = new Machine();
         amt =100;
-        let abc = '';
-        const expected = new Array(10,20,50,100,500);
-        for(let i = 0; i < expected.length; i++){
-            if(expected[i] == amt){
-                abc = 'You have deposited Rs: '+amt;
-                break;
-            }
-            else{
-                abc = expected[i];
-            }
-        }
+        const expected = "You have deposited Rs 100";
         // exercise
         const actual = machine.deposit(amt);
 
         // assert
-        expect(abc).toEqual(actual);
+        expect(expected).toEqual(actual);
     });
 
 // 3. As a customer, I want to add additional money, so that I can use the denominations I have to purchase an item.
 it('More deposite done', () => {
     // setup
     const machine = new Machine();
-    const amt2 = 50;
-    const expected = new Array(10,20,50,100,500);
-    for(var i = 0; i < expected.length; i++){
-        if(expected[i] == amt2){
-            amt +=amt2;
-            abc = 'You have deposited Rs: '+amt;
-            break;
-        }
-        else{
-            abc = expected[i];
-        }
-    }
+    const expected = "You have deposited Rs 150";
     // exercise
-    const actual = machine.deposit(amt);
+    machine.deposit(100);
+    const actual = machine.deposit(50);
 
     // assert
-    expect(actual).toEqual(abc);
+    expect(actual).toEqual(expected);
 });
 
-// 4. As a customer, I want to see a message if my item is unavailable, so that I can make another choice.
+//4. As a customer, I want to see a message if my item is unavailable, so that I can make another choice.
 it('The item you selected is unavailable', () => {
     // setup
     const machine = new Machine();
@@ -72,6 +52,21 @@ it('The item you selected is unavailable', () => {
 
     // assert
     expect(expected).toEqual(actual);
+});
+
+//5. As a customer, I want to see a message if my deposit is insufficient, so that I know to add more money.
+it('The item you selected is unavailable', () => {
+    // setup
+    const machine = new Machine();
+    const expected = 'Your deposit is insufficient. Please add Rs 50 for this item';
+    
+    
+    // exercise
+    machine.deposit(100);
+    const actual = machine.selectItem(0);
+
+    // assert
+    expect(actual).toEqual(expected);
 });
 
 });
