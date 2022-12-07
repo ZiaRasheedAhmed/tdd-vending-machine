@@ -70,13 +70,14 @@ describe('the vending machine', () => {
     });
 
     // 6. As a customer, I want to receive change, so that I don’t pay more than the item costs.
-    it('Your deposit is insufficient. Please add Rs 20 for this item', () => {
+    it('{"change": [10, 20], "item": "mints"}', () => {
         // setup
         const machine = new Machine();
-        const expected = "{item: 'mints', change: [20, 10]}";
+        const expected = {"change": [10, 20], "item": "mints"};
 
 
         // exercise
+        machine.deposit(100);
         const actual = machine.selectItem(2);
 
         // assert
